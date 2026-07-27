@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Results</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#88c2cf;
+    padding:40px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:40px;
+    color:#222;
+    font-size:40px;
+}
+
+/* Gallery */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:40px;
+    max-width:900px;
+    margin:auto;
+    justify-items:center;
+}
+
+.certificate{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+    transition:.3s;
+    text-align:center;
+}
+
+.certificate:hover{
+    transform:translateY(-8px);
+}
+
+.certificate img{
+    width:350px;
+    height:250px;
+    object-fit:cover;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.certificate img:hover{
+    transform:scale(1.03);
+}
+
+.certificate h3{
+    margin-top:15px;
+    color:#333;
+    font-size:22px;
+}
+
+/* Popup */
+
+.modal{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.85);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal-content{
+    text-align:center;
+    animation:zoom .3s;
+}
+
+.modal-content img{
+    max-width:85vw;
+    max-height:80vh;
+    border-radius:10px;
+    box-shadow:0 0 20px white;
+}
+
+.modal-content button{
+
+    margin-top:20px;
+    padding:12px 35px;
+
+    border:none;
+    border-radius:30px;
+
+    background:white;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.modal-content button:hover{
+
+    background:#ddd;
+
+}
+
+@keyframes zoom{
+
+from{
+transform:scale(.7);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+
+.gallery{
+
+grid-template-columns:1fr;
+
+}
+
+.certificate img{
+
+width:100%;
+height:auto;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Academic Results</h1>
+
+<div class="gallery">
+
+<div class="certificate">
+
+<img src="10th marksheet.jpeg"
+onclick="openModal(this.src)">
+
+<h3>10th Standard Marksheet</h3>
+
+</div>
+
+<div class="certificate">
+
+<img src="12th marksheet.jpeg"
+onclick="openModal(this.src)">
+
+<h3>12th Standard Marksheet</h3>
+
+</div>
+
+<div class="certificate">
+
+<img src="sem1.png"
+onclick="openModal(this.src)">
+
+<h3>B.Tech Semester 1 Result</h3>
+
+</div>
+
+<div class="certificate">
+
+<img src="sem2.png"
+onclick="openModal(this.src)">
+
+<h3>B.Tech Semester 2 Result</h3>
+
+</div>
+
+</div>
+
+<!-- Popup -->
+
+<div class="modal" id="popup">
+
+<div class="modal-content">
+
+<img id="popupImage">
+
+<br>
+
+<button onclick="closeModal()">Close</button>
+
+</div>
+
+</div>
+
+<script>
+
+function openModal(image){
+
+document.getElementById("popup").style.display="flex";
+
+document.getElementById("popupImage").src=image;
+
+}
+
+function closeModal(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+document.getElementById("popup").addEventListener("click",function(e){
+
+if(e.target===this){
+
+closeModal();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
